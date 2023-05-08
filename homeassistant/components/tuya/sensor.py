@@ -84,6 +84,26 @@ BATTERY_SENSORS: tuple[TuyaSensorEntityDescription, ...] = (
 SENSORS: dict[str, tuple[TuyaSensorEntityDescription, ...]] = {
     # Multi-functional Sensor
     # https://developer.tuya.com/en/docs/iot/categorydgnbj?id=Kaiuz3yorvzg3
+    
+    # Humidifier
+    # https://developer.tuya.com/en/docs/iot/s?id=K9gf48qwjz0i3
+    "gvygg3m8": (
+        TuyaSensorEntityDescription(
+            key=DPCode.HUMIDITY,
+            name="Humidity",
+            device_class=SensorDeviceClass.HUMIDITY,
+            state_class=SensorStateClass.MEASUREMENT,
+        ),
+        TuyaSensorEntityDescription(
+            key=DPCode.TEMP_CURRENT,
+            name="Temperature",
+            device_class=SensorDeviceClass.TEMPERATURE,
+            state_class=SensorStateClass.MEASUREMENT,
+        ),
+       *BATTERY_SENSORS,
+    ),
+
+    
     "dgnbj": (
         TuyaSensorEntityDescription(
             key=DPCode.GAS_SENSOR_VALUE,
